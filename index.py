@@ -64,7 +64,7 @@ def site_report():
     + ' and ' + str(period_2) + '. It is important to note that out of these ' + str(len(completed_patients_id)) +
     ' cases, there are some cases in this report that may have both RCADS and SDQ outcomes. On average, children'
     ' and young people showed reduced anxiety, improved low mood and parents reported reduced behaviour problems.'
-    'Parents and young people also made progress towards their individual interventions goals. Satisfaction with'
+    ' Parents and young people also made progress towards their individual interventions goals. Satisfaction with'
     ' the service were high. This report shows that scores on satisfaction measures were consistent with the rest'
     ' of London and the South East. The impliaction of the results from the report are discussed in the conclusion.') 
 
@@ -263,6 +263,16 @@ def site_report():
     st.write('This report demonstrates that the CWP programme is delivering an early help intervention for young'
     ' people before symptoms are exacerbated. Service user satisfaction with the interventions is reflected in'
     ' the ESQ.')
+
+    #RCADS
+    st.subheader('RCADS DataFrame - cleaned')
+    st.dataframe(rcads_cleaned_df)
+    #SDQ
+    st.subheader('SDQ DataFrame - cleaned')
+    st.dataframe(sdq_cleaned_df)
+    #GBO
+    st.subheader('GBO DataFrame - cleaned')
+    st.dataframe(gbo_cleaned_df)
 
 if st.button('Run report'):
     #Validation
