@@ -121,14 +121,14 @@ def site_report():
     st.write('Data shows an average reduction for anxiety and low mood problems of ' + str(np.round(sum(rcads_t1_means)/len(rcads_t1_means) - sum(rcads_t2_means)/len(rcads_t2_means),2))
     + ' points. This is higher than the average reduction for scores across services in London and the South East'
     ' of approximately 10 points.')
-    rcads_gad_above_threshold_t1 = rcads_cleaned_df[rcads_cleaned_df.rcads_band_gad_t1 == 'High score (top 2%)'].shape[0]
-    rcads_mdd_above_threshold_t1 = rcads_cleaned_df[rcads_cleaned_df.rcads_band_mdd_t1 == 'High score (top 2%)'].shape[0]
-    rcads_pd_above_threshold_t1 = rcads_cleaned_df[rcads_cleaned_df.rcads_band_pd_t1 == 'High score (top 2%)'].shape[0]
-    rcads_sp_above_threshold_t1 = rcads_cleaned_df[rcads_cleaned_df.rcads_band_sp_t1 == 'High score (top 2%)'].shape[0]
-    rcads_gad_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_band_gad_t2 == 'High score (top 2%)'].shape[0]
-    rcads_mdd_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_band_mdd_t2 == 'High score (top 2%)'].shape[0]
-    rcads_pd_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_band_pd_t2 == 'High score (top 2%)'].shape[0]
-    rcads_sp_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_band_sp_t2 == 'High score (top 2%)'].shape[0]
+    rcads_gad_above_threshold_t1 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_gad_t1 > 64].shape[0]
+    rcads_mdd_above_threshold_t1 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_mdd_t1 > 64].shape[0]
+    rcads_pd_above_threshold_t1 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_pd_t1 > 64].shape[0]
+    rcads_sp_above_threshold_t1 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_sp_t1 > 64].shape[0]
+    rcads_gad_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_gad_t2 > 64].shape[0]
+    rcads_mdd_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_mdd_t2 > 64].shape[0]
+    rcads_pd_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_pd_t2 > 64].shape[0]
+    rcads_sp_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_sp_t2 > 64].shape[0]
     rcads_labels_1 = ['GAD','MDD','PD','SP']
     rcads_t1_threshold = [rcads_gad_above_threshold_t1, rcads_mdd_above_threshold_t1, rcads_pd_above_threshold_t1, rcads_sp_above_threshold_t1]
     rcads_t2_threshold = [rcads_gad_above_threshold_t2, rcads_mdd_above_threshold_t2, rcads_pd_above_threshold_t2, rcads_sp_above_threshold_t2]
