@@ -86,16 +86,16 @@ def site_report():
     rcads_pd_t2 = np.round(rcads_cleaned_df['rcads_tscore_pd_t2'].mean(), 2)
     rcads_sp_t2 = np.round(rcads_cleaned_df['rcads_tscore_sp_t2'].mean(), 2)
     #graph
-    rcads_labels = ['GAD','MDD','PD','SP']
+    rcads_labels = ['GAD','Major depression','Panic','Social phobia']
     rcads_t1_means = [rcads_gad_t1, rcads_mdd_t1, rcads_pd_t1, rcads_sp_t1]
     rcads_t2_means = [rcads_gad_t2, rcads_mdd_t2, rcads_pd_t2, rcads_sp_t2]
     x = np.arange(len(rcads_labels))
     width = 0.35
     fig, ax = plt.subplots()
-    rects1 = ax.bar(x - width/2, rcads_t1_means, width, label='T1')
-    rects2 = ax.bar(x + width/2, rcads_t2_means, width, label='T2')
+    rects1 = ax.bar(x - width/2, rcads_t1_means, width, label='T1', color='lightseagreen')
+    rects2 = ax.bar(x + width/2, rcads_t2_means, width, label='T2', color='darkorchid')
     ax.set_ylabel('Average T-Score')
-    ax.set_title('Average T-Score at T1 and T2')
+    ax.set_title('Mean RCADS T Scores at Time 1 and Time 2')
     ax.set_xticks(x)
     ax.set_xticklabels(rcads_labels)
     ax.legend()
@@ -104,7 +104,7 @@ def site_report():
             height = rect.get_height()
             ax.annotate('{}'.format(height),
                 xy=(rect.get_x() + rect.get_width()/2, height),
-                xytext=(0, 3),
+                xytext=(0, 1),
                 textcoords="offset points",
                 ha='center', va='bottom')
     autolabel(rects1)
@@ -129,14 +129,14 @@ def site_report():
     rcads_mdd_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_mdd_t2 > 64].shape[0]
     rcads_pd_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_pd_t2 > 64].shape[0]
     rcads_sp_above_threshold_t2 = rcads_cleaned_df[rcads_cleaned_df.rcads_tscore_sp_t2 > 64].shape[0]
-    rcads_labels_1 = ['GAD','MDD','PD','SP']
+    rcads_labels_1 = ['GAD','Major depression','Panic','Social phobia']
     rcads_t1_threshold = [rcads_gad_above_threshold_t1, rcads_mdd_above_threshold_t1, rcads_pd_above_threshold_t1, rcads_sp_above_threshold_t1]
     rcads_t2_threshold = [rcads_gad_above_threshold_t2, rcads_mdd_above_threshold_t2, rcads_pd_above_threshold_t2, rcads_sp_above_threshold_t2]
     fig1, ax1 = plt.subplots()
-    rectss1 = ax1.bar(x - width/2, rcads_t1_threshold, width, label='T1')
-    rectss2 = ax1.bar(x + width/2, rcads_t2_threshold, width, label='T2')
+    rectss1 = ax1.bar(x - width/2, rcads_t1_threshold, width, label='T1', color='lightseagreen')
+    rectss2 = ax1.bar(x + width/2, rcads_t2_threshold, width, label='T2', color='darkorchid')
     ax1.set_ylabel('Frequency')
-    ax1.set_title('Scores above threshold')
+    ax1.set_title('Number of scores reaching clinical threshold')
     ax1.set_xticks(x)
     ax1.set_xticklabels(rcads_labels)
     ax1.legend()
@@ -145,7 +145,7 @@ def site_report():
             height = rect.get_height()
             ax1.annotate('{}'.format(height),
                 xy=(rect.get_x() + rect.get_width()/2, height),
-                xytext=(0, 3),
+                xytext=(0, 1),
                 textcoords="offset points",
                 ha='center', va='bottom')
     autolabel1(rectss1)
@@ -195,10 +195,10 @@ def site_report():
     sdq_t2_impacts = [sdq_distress_t2, sdq_homelife_t2, sdq_friendship_t2, sdq_learning_t2, sdq_leisure_t2]
     x1 = np.arange(len(sdq_labels))
     fig2, ax2 = plt.subplots()
-    rectsss1 = ax2.bar(x1 - width/2, sdq_t1_impacts, width, label='T1')
-    rectsss2 = ax2.bar(x1 + width/2, sdq_t2_impacts, width, label='T2')
+    rectsss1 = ax2.bar(x1 - width/2, sdq_t1_impacts, width, label='T1', color='lightseagreen')
+    rectsss2 = ax2.bar(x1 + width/2, sdq_t2_impacts, width, label='T2', color='darkorchid')
     ax2.set_ylabel('Impact Score')
-    ax2.set_title('Average Impact Score')
+    ax2.set_title('Average Impact Scores')
     ax2.set_xticks(x1)
     ax2.set_xticklabels(sdq_labels)
     ax2.legend()
@@ -207,7 +207,7 @@ def site_report():
             height = rect.get_height()
             ax2.annotate('{}'.format(height),
                 xy=(rect.get_x() + rect.get_width()/2, height),
-                xytext=(0, 3),
+                xytext=(0, 1),
                 textcoords="offset points",
                 ha='center', va='bottom')
     autolabel2(rectsss1)
