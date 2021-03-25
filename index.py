@@ -37,6 +37,12 @@ def site_report():
     rcads_df = pd.read_csv(rcads)
     sdq_df = pd.read_csv(sdq)
     gbo_df = pd.read_csv(gbo)
+    esq_self_9_11_df = pd.read_csv(esq_self_9_11)
+    esq_self_12_18_df = pd.read_csv(esq_self_12_18)
+    esq_parent_carer_df = pd.read_csv(esq_parent_carer)
+    esq_self_9_11_cleaned = []
+    esq_self_12_18_cleaned = []
+    esq_parent_carer_cleaned = []
     rcads_cleaned = [] #<-- cleaned rcads for analysis
     sdq_cleaned = [] #<-- cleanded sdq for analysis
     gbo_cleaned = [] #<-- cleaned gbo for analysis
@@ -241,15 +247,15 @@ def site_report():
 
     #ESQ
     if esq_parent_carer or esq_self_12_18 or esq_self_9_11:
-        esq_parent_carer_df = pd.DataFrame(esq_parent_carer)
-        esq_self_12_18_df = pd.DataFrame(esq_self_12_18)
-        esq_self_9_11_df = pd.DataFrame(esq_self_9_11)
+        esq_parent_carer_cleaned_df = pd.DataFrame(esq_parent_carer_cleaned)
+        esq_self_12_18_cleaned_df = pd.DataFrame(esq_self_12_18_cleaned)
+        esq_self_9_11_cleaned_df = pd.DataFrame(esq_self_9_11_cleaned)
         st.subheader('Experience of Service Questionnaire')
         st.write('The ESQs were given to clients at the end of intervention. In ' + site_name + ', the ESQ was '
-        'completed by ' + str(esq_parent_carer_df.shape[0] + esq_self_12_18_df.shape[0] + esq_self_9_11_df.shape[0])
-        + ' clients. The ESQ Parent was completed by ' + str(esq_parent_carer_df.shape[0]) + ' clients.'
-        + ' The ESQ Self 12-18 was completed by ' + str(esq_self_12_18_df.shape[0]) + ' clients.'
-        + ' The ESQ Self 9-11 was completed by ' + str(esq_self_9_11_df.shape[0]) + ' clients.')
+        'completed by ' + str(esq_parent_carer_cleaned_df.shape[0] + esq_self_12_18_cleaned_df.shape[0] + esq_self_9_11_cleaned_df.shape[0])
+        + ' clients. The ESQ Parent was completed by ' + str(esq_parent_carer_cleaned_df.shape[0]) + ' clients.'
+        + ' The ESQ Self 12-18 was completed by ' + str(esq_self_12_18_cleaned_df.shape[0]) + ' clients.'
+        + ' The ESQ Self 9-11 was completed by ' + str(esq_self_9_11_cleaned_df.shape[0]) + ' clients.')
     
     #Conclusion
     st.subheader('Conclusion')
